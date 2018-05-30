@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://tests/hex_holder_test.gd" type="Script" id=1]
+[ext_resource path="res://scripts/nodes/board/hex_holder_node.gd" type="Script" id=2]
+[ext_resource path="res://scenes/board/hex.tscn" type="PackedScene" id=3]
+
+[node name="Node" type="Node"]
+
+[node name="Node" type="Node" parent="."]
+
+script/script = ExtResource( 1 )
+run_test = true
+
+[node name="HexHolder" type="Node2D" parent="Node"]
+
+script/script = ExtResource( 2 )
+hex_width = 7
+hex_height = 6
+hex_pixel_scale = 8
+hex_row_count = 8
+hex_column_count = 7
+center_hexes = true
+hex_scene = ExtResource( 3 )
+debug_draw_hex_edges = false
+debug_draw_hex_center = false
+debug_hex_edge_color = Color( 0, 0, 0, 0.5 )
+debug_hex_edge_width = 1.0
+debug_hex_center_radius = 2
+
+
