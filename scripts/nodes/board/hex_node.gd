@@ -8,6 +8,11 @@ const HexHolderNode = preload("hex_holder_node.gd")
 
 var _hex_holder = null
 
+var highlight = false setget _set_debug_highlight
+var highlight_edge = []
+
+var highlight_color_override = null
+
 func _ready():
 	var p = get_parent()
 	
@@ -18,6 +23,10 @@ func _ready():
 		_hex_holder = weakref(p)
 	
 	pass
+	
+func _set_debug_highlight(val):
+	highlight = val
+	update()
 
 func _draw():
 	var holder = _hex_holder.get_ref()
@@ -32,31 +41,29 @@ func _draw():
 	pass
 	
 func _draw_hex_edges(holder):
-	var width = holder.hex_width * holder.hex_pixel_scale
-	var height = holder.hex_height * holder.hex_pixel_scale
-	var side = width / 2.0
-	var x_left_top = (width - side) / 2.0
-	var x_right_top = (width - side) / 2.0 + side
-	
-	var offset_x = -width / 2.0
-	var offset_y = -height / 2.0
-	
-	var points = [
-		Vector2(x_left_top + offset_x, 0 + offset_y),
-		Vector2(x_right_top + offset_x, 0 + offset_y),
-		Vector2(width + offset_x, height / 2.0 + offset_y),
-		Vector2(x_right_top + offset_x, height + offset_y),
-		Vector2(x_left_top + offset_x, height + offset_y),
-		Vector2(0 + offset_x, height / 2.0 + offset_y)
-	]
+	var points = holder.get_hex_point_offsets()
 	
 	for index in range(points.size() - 1):
 		draw_line(points[index], points[index + 1], holder.debug_hex_edge_color, holder.debug_hex_edge_width)
 		
 	draw_line(points[points.size() - 1], points[0], holder.debug_hex_edge_color, holder.debug_hex_edge_width)
 	
+	if highlight:
+		var col = highlight_color_override
+		
+		if col == null:
+			col = holder.debug_hex_highlight_color
+		
+		draw_colored_polygon(points, col)
+		
+		if highlight_edge != null and highlight_edge.size() == 2:
+			var edge_color = col
+			draw_line(highlight_edge[0], highlight_edge[1], edge_color, holder.debug_hex_edge_width * 8)
+	
 	pass
 	
 func _draw_hex_center(holder):
+	if highlight:
+		return
 	draw_circle(Vector2(0, 0), holder.debug_hex_center_radius, holder.debug_hex_edge_color)
 	pass

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/misc_tests.gd" type="Script" id=1]
+[ext_resource path="res://scenes/board/direction_arrow.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="direction_arrow" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 600, 300 )
+from_arrow_direction = 1
+to_arrow_direction = 4
+from_hex_coords = Vector2( 0, 0 )
+to_hex_coords = Vector2( 0, 0 )
+
+

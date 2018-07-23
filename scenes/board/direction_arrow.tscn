@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/nodes/board/direction_arrow_node.gd" type="Script" id=1]
+
+[node name="direction_arrow" type="Node2D"]
+
+script/script = ExtResource( 1 )
+from_arrow_direction = 0
+to_arrow_direction = 0
+direction_arrow_type = 0
+from_hex_coords = Vector2( 0, 0 )
+to_hex_coords = Vector2( 0, 0 )
+
+[node name="Arrow_1" type="Node2D" parent="."]
+
+[node name="Background" type="Polygon2D" parent="Arrow_1"]
+
+polygon = Vector2Array( 0, -2, -10, -8, -12, -6, 0, 20, 12, -6, 10, -8 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Dark" type="Polygon2D" parent="Arrow_1"]
+
+polygon = Vector2Array( 0, 0, -10, -6, 0, 16, 10, -6 )
+uv = Vector2Array(  )
+color = Color( 0.247059, 0.247059, 0.247059, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="LightHalf" type="Polygon2D" parent="Arrow_1"]
+
+polygon = Vector2Array( 0, 0, 0, 16, -10, -6 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.247059 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Arrow_2" type="Node2D" parent="."]
+
+[node name="Background" type="Polygon2D" parent="Arrow_2"]
+
+polygon = Vector2Array( 0, -2, -10, -8, -12, -6, 0, 20, 12, -6, 10, -8 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Dark" type="Polygon2D" parent="Arrow_2"]
+
+polygon = Vector2Array( 0, 0, -10, -6, 0, 16, 10, -6 )
+uv = Vector2Array(  )
+color = Color( 0.247059, 0.247059, 0.247059, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="LightHalf" type="Polygon2D" parent="Arrow_2"]
+
+polygon = Vector2Array( 0, 0, 0, 16, -10, -6 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.247059 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+

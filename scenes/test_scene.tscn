@@ -1,30 +1,65 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://tests/hex_holder_test.gd" type="Script" id=1]
 [ext_resource path="res://scripts/nodes/board/hex_holder_node.gd" type="Script" id=2]
 [ext_resource path="res://scenes/board/hex.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tests/direction_arrow_holder_test.gd" type="Script" id=4]
+[ext_resource path="res://scripts/nodes/board/direction_arrow_holder_node.gd" type="Script" id=5]
+[ext_resource path="res://scenes/board/direction_arrow.tscn" type="PackedScene" id=6]
 
 [node name="Node" type="Node"]
 
-[node name="Node" type="Node" parent="."]
+[node name="hex_holder_test" type="Node" parent="."]
 
 script/script = ExtResource( 1 )
-run_test = true
+run_test = false
 
-[node name="HexHolder" type="Node2D" parent="Node"]
+[node name="HexHolder" type="Node2D" parent="hex_holder_test"]
 
 script/script = ExtResource( 2 )
 hex_width = 7
 hex_height = 6
-hex_pixel_scale = 8
-hex_row_count = 8
-hex_column_count = 7
-center_hexes = true
+hex_pixel_scale = 16
+hex_row_count = 7
+hex_column_count = 10
+center_hexes = false
 hex_scene = ExtResource( 3 )
-debug_draw_hex_edges = false
-debug_draw_hex_center = false
+debug_draw_hex_edges = true
+debug_draw_hex_center = true
 debug_hex_edge_color = Color( 0, 0, 0, 0.5 )
 debug_hex_edge_width = 1.0
 debug_hex_center_radius = 2
+debug_hex_highlight_color = Color( 0.661509, 0.0147247, 0.753906, 0.25 )
+
+[node name="direction_arrow_holder_test" type="Node" parent="."]
+
+script/script = ExtResource( 4 )
+run_test = true
+
+[node name="DirectionArrowHolder" type="Node2D" parent="direction_arrow_holder_test"]
+
+script/script = ExtResource( 5 )
+hex_holder_node_path = null
+distance_from_hex_edge = 1
+
+[node name="direction_arrow" parent="direction_arrow_holder_test/DirectionArrowHolder" instance=ExtResource( 6 )]
+
+from_arrow_direction = 5
+to_arrow_direction = 1
+from_hex_coords = Vector2( 3, 3 )
+to_hex_coords = Vector2( 5, 3 )
+
+[node name="direction_arrow 2" parent="direction_arrow_holder_test/DirectionArrowHolder" instance=ExtResource( 6 )]
+
+to_arrow_direction = 1
+from_hex_coords = Vector2( 1, 2 )
+to_hex_coords = Vector2( 2, 2 )
+
+[node name="direction_arrow 3" parent="direction_arrow_holder_test/DirectionArrowHolder" instance=ExtResource( 6 )]
+
+from_arrow_direction = 5
+to_arrow_direction = 1
+from_hex_coords = Vector2( 2, 1 )
+to_hex_coords = Vector2( 4, 1 )
 
 

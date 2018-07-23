@@ -11,8 +11,8 @@ func _setup():
 	hex_holder_node.hex_width = 7
 	hex_holder_node.hex_height = 6
 	hex_holder_node.hex_pixel_scale = 8
-	hex_holder_node.hex_row_count = 3#7
-	hex_holder_node.hex_column_count = 3#7
+	hex_holder_node.hex_row_count = 7
+	hex_holder_node.hex_column_count = 10
 	
 	hex_holder_node.center_hexes = false
 	
@@ -23,6 +23,7 @@ func _setup():
 	hex_holder_node.debug_hex_edge_color = Color(1, 1, 0, 0.5)
 	hex_holder_node.debug_hex_edge_width = 2
 	hex_holder_node.debug_hex_center_radius = 2
+	hex_holder_node.debug_hex_highlight_color = Color(1, 0.5, 0, 0.25)
 	
 	#get_node("HexHolder").generate_hexes()
 	
@@ -39,6 +40,11 @@ func _run():
 	_get_hex_test(1, 1)
 	_get_hex_test(1, 2)
 	_get_hex_test(2, 2)
+	
+	assert_print(hex_holder_node.get_hex_width_px() == hex_holder_node.hex_width * hex_holder_node.hex_pixel_scale, 'get_hex_width_px wrong result')
+	assert_print(hex_holder_node.get_hex_height_px() == hex_holder_node.hex_height * hex_holder_node.hex_pixel_scale, 'get_hex_height_px wrong result')
+	
+	assert_print(hex_holder_node.get_edge_offset(0)[0] == hex_holder_node.get_edge_offset(5)[1], 'get_edge not working')
 	
 func _teardown():
 	#hex_holder_node.free()
